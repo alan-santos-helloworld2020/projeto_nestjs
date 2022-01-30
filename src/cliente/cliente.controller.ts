@@ -11,8 +11,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ClienteService } from './cliente.service';
-
-const banco = [];
+import { ClienteDto } from './dto/cliente.dto';
 
 @Controller('cliente')
 export class ClienteController {
@@ -28,13 +27,13 @@ export class ClienteController {
   }
   @Post('salvar')
   @HttpCode(HttpStatus.CREATED)
-  salvar(@Body() body) {
+  salvar(@Body() body: ClienteDto) {
     this.clienteService.salvar(body);
     return body;
   }
   @Put('alterar/:id')
   @HttpCode(HttpStatus.CREATED)
-  alterar(@Param('id') id: string, @Body() body) {
+  alterar(@Param('id') id: string, @Body() body: ClienteDto) {
     this.clienteService.alterar(id, body);
     return body;
   }

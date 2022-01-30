@@ -23,14 +23,15 @@ export class ClienteService {
     }
   }
 
-  salvar(dados: any) {
-    dados.id = this.cliente.length + 1;
-    this.cliente.push(dados);
-    return dados;
+  salvar(ClienteDto: any) {
+    ClienteDto.id = this.cliente.length + 1;
+    ClienteDto.data = '22/01/2022';
+    this.cliente.push(ClienteDto);
+    return ClienteDto;
   }
-  alterar(id: string, dados: any) {
+  alterar(id: string, ClienteDto: any) {
     const index = this.cliente.findIndex((c) => c.id === Number(id));
-    this.cliente[index] = dados;
+    this.cliente[index] = ClienteDto;
   }
   deletar(id: string) {
     const index = this.cliente.findIndex((c) => c.id === Number(id));
